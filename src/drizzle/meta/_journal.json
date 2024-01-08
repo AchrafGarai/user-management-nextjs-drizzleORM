@@ -1,0 +1,34 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1704648781229,
+      "tag": "0000_blue_hammerhead",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1704661753670,
+      "tag": "0001_graceful_quicksilver",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1704727678920,
+      "tag": "0002_gorgeous_payback",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1704727798692,
+      "tag": "0003_same_lord_hawal",
+      "breakpoints": true
+    }
+  ]
+}
