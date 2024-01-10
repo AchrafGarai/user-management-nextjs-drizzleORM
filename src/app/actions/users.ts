@@ -1,5 +1,7 @@
 "use server";
 
+import { resend } from "@/lib/resend";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const schema = z.object({
@@ -20,7 +22,14 @@ export default async function createUser(formData: FormData) {
 		};
 	}
 	const { data } = validatedFields;
-	console.log(data);
+
+	// Send email invitation to users
+	resend.emails.send({
+		from: "onboarding@resend.dev",
+		to: data.email,
+		subject: "You have been invited to join a workplace",
+		html: "<p>Congrats on sending your <strong>first email</strong>!</p>",
+	});
 
 	// Mutate data
 }
