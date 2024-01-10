@@ -8,3 +8,4 @@ export const users = pgTable("users", {
 	avatar: varchar("avatar", { length: 256 }).default("default-avatar.svg"),
 	createdAt: date("created_at").defaultNow(),
 });
+export type User = typeof users.$inferSelect;
