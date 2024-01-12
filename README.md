@@ -29,6 +29,18 @@ pnpm db:studio
 
 Open [https://local.drizzle.studio/](https://local.drizzle.studio/) with your browser to connect to your Postgres database and edit your data.
 
+### Environment variables 
+create a .env file and add the secrets needs for, including 
+
+- Prostgreq connection string, 
+- Resend API key 
+- Random secret password to sign 
+```env
+DB_URL=
+RESEND_API_KEY=
+JWT_SECRET=
+```
+
 
 ## Deploy on Vercel
 
