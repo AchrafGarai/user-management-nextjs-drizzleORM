@@ -1,8 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+![App preview](https://raw.githubusercontent.com/AchrafGarai/user-management-nextjs-drizzleORM/main/public/screenshot.png)
 
-First, run the development server:
+## NextJS, DrizzleORM, ShadcnUI, React Email user management application.
+
+This is an example user management application showing the use case of generating secure invitations, registering users
 
 ```bash
 npm run dev
@@ -15,22 +17,29 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+pnpm email
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:4000](http://localhost:4000) with your browser to the email preview.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+pnpm db:studio
+```
 
-## Learn More
+Open [https://local.drizzle.studio/](https://local.drizzle.studio/) with your browser to connect to your Postgres database and edit your data.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## About Me
+
+My name is Achraf 👋😃, I am product designer and developer and I love building apps and websites 🚀. You can find me on the following links. I would love to connect and get to know amazing developers and designers. Feel free to reach out to me for any questions or recommendations.
+
+- [Linkedin](https://www.linkedin.com/in/achraf-garai).
+- [Instagram](https://www.instagram.com/achraf_garai).
+- [Website](https://www.achafgarai.com)
