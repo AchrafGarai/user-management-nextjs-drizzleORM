@@ -3,6 +3,7 @@ import { db } from "@/db";
 import { columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
 import NewUserDialogue from "./users/new-user-dialog";
+import PaginateTable from "@/components/pagination";
 
 export default async function Home() {
 	const res = await db.query.users.findMany();
@@ -22,6 +23,7 @@ export default async function Home() {
 				<NewUserDialogue />
 			</div>
 			<DataTable columns={columns} data={res} />
+			<PaginateTable />
 		</main>
 	);
 }

@@ -14,9 +14,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import { createUserAction } from "../actions";
-import createUser from "../actions/users";
-import { useFormState } from "react-dom";
+import { inviteUser } from "../actions";
 
 const formSchema = z.object({
 	email: z
@@ -25,7 +23,7 @@ const formSchema = z.object({
 		.email({ message: "Must be a valid email address" }),
 });
 
-export function NewUserForm() {
+export function NewUserForm({ onFormSubmit }: { onFormSubmit: () => void }) {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -35,15 +33,12 @@ export function NewUserForm() {
 
 	const { isValid } = form.formState;
 
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		//console.log(values);
-	}
-
 	return (
 		<Form {...form}>
 			<form
 				//onSubmit={form.handleSubmit(onSubmit)}
-				action={createUser}
+				onSubmit={onFormSubmit}
+				action={inviteUser}
 				className="space-y-8"
 			>
 				<FormField

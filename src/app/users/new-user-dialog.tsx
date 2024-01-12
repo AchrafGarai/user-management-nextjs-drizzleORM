@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import {
@@ -14,8 +15,9 @@ import { NewUserForm } from "./new-user-form";
 import { Separator } from "@/components/ui/separator";
 
 function NewUserDialogue() {
+	const [isOpen, setIsOpen] = useState(false);
 	return (
-		<Dialog>
+		<Dialog open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
 			<DialogTrigger
 				className={cn(buttonVariants({ variant: "outline" }), " gap-2")}
 			>
@@ -29,7 +31,7 @@ function NewUserDialogue() {
 						Fill in the user details and send an e-mail invitation.
 					</DialogDescription>
 					<Separator />
-					<NewUserForm />
+					<NewUserForm onFormSubmit={() => setIsOpen(!isOpen)} />
 				</DialogHeader>
 			</DialogContent>
 		</Dialog>

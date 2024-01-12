@@ -13,6 +13,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { MoreHorizontal } from "lucide-react";
+import { ReactNode } from "react";
+import TimeAgo from "react-timeago-i18n";
+import { StatusBadge } from "@/components/ui/status";
+
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 
@@ -39,6 +43,27 @@ export const columns: ColumnDef<User>[] = [
 		header: "Email",
 	},
 	{
+		accessorKey: "createdAt",
+		header: "Date Joined",
+
+		cell: (row) => {
+			return <TimeAgo date={row.getValue() as string | Date} />;
+		},
+	},
+	{
+		accessorKey: "status",
+		header: "Status",
+		cell: (row) => {
+			return (
+				<StatusBadge
+					variant={row.getValue() as "pending" | "cancelled" | "active"}
+				>
+					{row.getValue() as ReactNode}
+				</StatusBadge>
+			);
+		},
+	},
+	{
 		id: "actions",
 		enableHiding: false,
 		cell: ({ row }) => {
@@ -55,8 +80,10 @@ export const columns: ColumnDef<User>[] = [
 					<DropdownMenuContent align="end">
 						<DropdownMenuLabel>Actions</DropdownMenuLabel>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>View customer</DropdownMenuItem>
-						<DropdownMenuItem>View payment details</DropdownMenuItem>
+						<DropdownMenuItem>Resend Invitation</DropdownMenuItem>
+						<DropdownMenuItem className=" text-red-500">
+							Delete User
+						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>
 			);
