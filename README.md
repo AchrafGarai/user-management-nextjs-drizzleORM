@@ -54,4 +54,4 @@ My name is Achraf 👋😃, I am product designer and developer and I love build
 
 - [Linkedin](https://www.linkedin.com/in/achraf-garai).
 - [Instagram](https://www.instagram.com/achraf_garai).
-- [Website](https://www.achafgarai.com)
+- [Website](https://www.achrafgarai.com)
