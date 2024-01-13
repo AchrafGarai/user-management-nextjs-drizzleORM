@@ -1,3 +1,4 @@
+import React from "react";
 import {
 	Body,
 	Button,
@@ -15,16 +16,14 @@ import {
 	Tailwind,
 	Text,
 } from "@react-email/components";
-import * as React from "react";
 
-type Props = { user: string; invitation: string; invitedByEmail: string };
+type Props = { user: string; invitation: string };
 
-export function InvitationEmail({ user, invitation, invitedByEmail }: Props) {
-	const previewText = "You have invited to join a workspace";
+export function CreateEmail({ user, invitation }: Props) {
 	return (
 		<Html>
 			<Head />
-			<Preview>{previewText}</Preview>
+			<Preview>Welcoome to your new workspace 🚀</Preview>
 			<Tailwind>
 				<Body className="bg-white my-auto mx-auto font-sans">
 					<Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
@@ -46,29 +45,17 @@ export function InvitationEmail({ user, invitation, invitedByEmail }: Props) {
 							Hello {user},
 						</Text>
 						<Text className="text-black text-[14px] leading-[24px]">
-							<strong>{user}</strong> (
-							<Link
-								href={`mailto:${invitedByEmail}`}
-								className="text-blue-600 no-underline"
-							>
-								{invitedByEmail}
-							</Link>
-							) has invited you to their <strong>{"Workplace"}</strong>
+							Your account has been set up successfully.{" "}
+							<strong>{"congrats"}</strong>
 						</Text>
 						<Section className="text-center mt-[32px] mb-[32px]">
 							<Button
 								className="bg-[#000000] text-white text-[16px] rounded-md font-semibold no-underline text-center p-2"
 								href={invitation}
 							>
-								Accept Invitation
+								Go you workspace
 							</Button>
 						</Section>
-						<Text className="text-black text-[14px] leading-[24px]">
-							or copy and paste this URL into your browser:{" "}
-							<Link href={"inviteLink"} className="text-blue-600 no-underline">
-								Invitation Link
-							</Link>
-						</Text>
 						<Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
 						<Text className="text-[#666666] text-[12px] leading-[24px]">
 							This invitation was intended for {user}

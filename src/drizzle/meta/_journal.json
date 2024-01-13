@@ -43,6 +43,13 @@
       "when": 1705055181473,
       "tag": "0005_steady_maximus",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1705127816808,
+      "tag": "0006_peaceful_maelstrom",
+      "breakpoints": true
     }
   ]
 }

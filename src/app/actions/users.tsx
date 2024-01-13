@@ -6,6 +6,9 @@ import { users } from "@/schema";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { InvitationEmail } from "@/email";
+import { signJwt } from "@/lib/jwt";
+import { CreateEmail } from "@/email/create-user";
 
 const inviteUserSchema = z.object({
 	email: z.string({
@@ -34,23 +37,37 @@ export async function inviteUser(formData: FormData) {
 	}
 	const { data } = validatedFields;
 
-	await db
-		.insert(users)
-		.values({
-			firstName: "",
-			lastName: "",
-			email: data.email,
-		})
-		.onConflictDoNothing();
+	// Sign jwt
+	const { token } = signJwt(data.email);
+	console.log(token);
+	const invitationLink = `https://localhost:3000/users/register?token=${token}`;
 
 	// Send email invitation to users
-	resend.emails.send({
-		from: "onboarding@resend.dev",
-		to: data.email,
-		subject: "You have been invited to join a workplace",
-		html: "<p>Congrats on sending your <strong>first email</strong>!</p>",
-	});
-	// Mutate data
+	try {
+		await resend.emails.send({
+			from: "Acme <onboarding@resend.dev>",
+			to: [data.email],
+			subject: "You have been invited to join a workspace (from action)",
+			text: "",
+			react: InvitationEmail({
+				user: data.email,
+				invitation: invitationLink,
+				invitedByEmail: "achrafgarai",
+			}),
+		});
+
+		// Mutate data
+		await db
+			.insert(users)
+			.values({
+				firstName: "",
+				lastName: "",
+				email: data.email,
+			})
+			.onConflictDoNothing();
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 export async function createUser(formData: FormData) {
@@ -73,5 +90,16 @@ export async function createUser(formData: FormData) {
 		.update(users)
 		.set({ ...data, status: "active" })
 		.where(eq(users.email, data.email));
+
+	await resend.emails.send({
+		from: "Acme <onboarding@resend.dev>",
+		to: [data.email],
+		subject: "You have successfully set up your account",
+		text: "",
+		react: CreateEmail({
+			user: data.email,
+			invitation: "",
+		}),
+	});
 	redirect("/");
 }

@@ -15,6 +15,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { inviteUser } from "../actions";
+import { useFormStatus } from "react-dom";
 
 const formSchema = z.object({
 	email: z
@@ -30,6 +31,8 @@ export function NewUserForm({ onFormSubmit }: { onFormSubmit: () => void }) {
 			email: "",
 		},
 	});
+
+	const { pending } = useFormStatus();
 
 	const { isValid } = form.formState;
 
@@ -58,7 +61,7 @@ export function NewUserForm({ onFormSubmit }: { onFormSubmit: () => void }) {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" disabled={!isValid}>
+				<Button type="submit" disabled={!isValid || pending}>
 					Submit
 				</Button>
 			</form>
